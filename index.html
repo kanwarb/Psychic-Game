@@ -9,102 +9,32 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/custom.css">
+        
     </head>
     
 <body>
-    
+        <script src="./javascript/game.js" type="text/javascript"></script>
+    <!-- Add Bootstrap classes to provide styling to the webpage -->
     <header>  
         <div class="container">
             <div class="jumbotron">
                 <h1>The Psychic Game</h1>
                 <h3>Guess what letter I'm thinking of</h3>
-                <h3>Wins:  <span id=myWinID></span> </h3>
+                <h3>Wins:  <span id=myWinID></span> </h3>   
                 <h3>Losses: <span id=myLossID></span></h3>
                 <h3 >Guesses Left:: <span id=myGuessLeftID></span></h3>
                 <h3> Your Guesses so Far: <span id=myGuessID></span></h3>
             </div> 
         </div>
     </header>
-
-        <script type="text/javascript">
-            var englishAlphabets = "abcdefghijklmnopqrstuvwxyz";
-            var computerGuess = Math.floor(Math.random() * englishAlphabets.length);
-            var myGuess =Array();
-            var myGuessID = document.getElementById("myGuessID");
-            var my_guess_count = 0;
-            var my_guess_string ="";
-            var my_Guess_letter='';
-            var computerChar ='';
-            var myLosses = 0;
-            var myLossID = document.getElementById("myLossID");
-            var myWinID = document.getElementById("myWinID");
-            var myWins = 0;
-            var myGuessLeft = 10;
-            var myGuessLeftID = document.getElementById("myGuessLeftID");
-         
-            function my_guesses_array()
-            {
-                document.onkeyup = function(event){
-                    myGuessID.textContent = event.key;
-                        computerChar =  englishAlphabets.charAt(Math.floor(Math.random() * englishAlphabets.length));
  
-                        if ( englishAlphabets.indexOf(event.key) == -1 ) 
-                           {
-                               console.log()
-                               alert("You pressed an invalid key" + event.key +" Please enter a letter between a to z");
-                           } 
-                           else
-                           {
-                            if (my_guess_count >= 10 ) {
-                                computerChar='';
-                                myGuess= [];
-                                my_guess_string='';
-                                document.getElementById("myGuessID").innerHTML = my_guess_string;
-                                my_guess_count =0;
-                                myLosses++;
-                                myGuessLeft =11;
-                                document.getElementById("myLossID").innerHTML = myLosses;
-                            }
-                            if(computerChar == event.key) {
-                                alert(computerChar + " That is the right answer");
-                                computerChar='';
-                                myGuess= [];
-                                my_guess_string='';
-                                document.getElementById("myGuessID").innerHTML = my_guess_string;
-                                my_guess_count =0;
-                                myGuessLeft =11;
-                                myWins++;
-                                document.getElementById("myWinID").innerHTML = myWins;
-                            }
-                            else if (computerChar != event.key) {
-                                console.log(computerChar);
-                                myGuess_letter = event.key;
-                                myGuess[0] = document.getElementById("myGuessID").value;
-                                
-                                    for(i=0; i < myGuess.length; i++) {
-                                        my_guess_string += myGuess_letter +',';
-                                        document.getElementById("myGuessID").innerHTML = my_guess_string;
-                                
-                                        computerGuess = Math.floor(Math.random() * englishAlphabets.length);
-                                
-                                    }
-                                    my_guess_count++;
-                            }
-                        }      
-                            computerChar='';
-                            myGuess= [];
-                            myGuessLeft--;  
-                            document.getElementById("myGuessLeftID").innerHTML = myGuessLeft;
-                }
-            }
-            my_guesses_array();
- 
-        </script>   
+  
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- 
+
     </body>
 
 
