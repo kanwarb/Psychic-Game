@@ -9,12 +9,12 @@
         <h3>Guess what letter I'm thinking of</h3>
         <h3>Wins:  <span id=myWinID></span> </h3>
         <h3>Losses: <span id=myLossID></span></h3>
-        <h3>Guesses Left:</h3>
-        <h3 >Your Guesses so far: <span id=myGuessID></span></h3>
+        <h3 >Guesses Left:: <span id=myGuessLeftID></span></h3>
+        <h3> Your Guesses so Far: <span id=myGuessID></span></h3>
+        
 
 
         <script type="text/javascript">
-            // var englishAlphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
             var englishAlphabets = "abcdefghijklmnopqrstuvwxyz";
             var computerGuess = Math.floor(Math.random() * englishAlphabets.length);
             var myGuess =Array();
@@ -27,14 +27,15 @@
             var myLossID = document.getElementById("myLossID");
             var myWinID = document.getElementById("myWinID");
             var myWins = 0;
-            var myGuessLeft = 0;
+            var myGuessLeft = 10;
+            var myGuessLeftID = document.getElementById("myGuessLeftID");
          
             function my_guesses_array()
             {
                 document.onkeyup = function(event){
                     myGuessID.textContent = event.key;
-                            computerChar =  englishAlphabets.charAt(Math.floor(Math.random() * englishAlphabets.length));
-                           
+                        computerChar =  englishAlphabets.charAt(Math.floor(Math.random() * englishAlphabets.length));
+ 
                         if ( englishAlphabets.indexOf(event.key) == -1 ) 
                            {
                                console.log()
@@ -49,6 +50,7 @@
                                 document.getElementById("myGuessID").innerHTML = my_guess_string;
                                 my_guess_count =0;
                                 myLosses++;
+                                myGuessLeft =11;
                                 document.getElementById("myLossID").innerHTML = myLosses;
                             }
                             if(computerChar == event.key) {
@@ -58,6 +60,7 @@
                                 my_guess_string='';
                                 document.getElementById("myGuessID").innerHTML = my_guess_string;
                                 my_guess_count =0;
+                                myGuessLeft =11;
                                 myWins++;
                                 document.getElementById("myWinID").innerHTML = myWins;
                             }
@@ -78,6 +81,8 @@
                         }      
                             computerChar='';
                             myGuess= [];
+                            myGuessLeft--;  
+                            document.getElementById("myGuessLeftID").innerHTML = myGuessLeft;
                 }
             }
             my_guesses_array();
