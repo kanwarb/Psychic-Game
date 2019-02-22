@@ -26,11 +26,13 @@ function my_guesses_array()
     
             computerChar =  englishAlphabets.charAt(Math.floor(Math.random() * englishAlphabets.length));
 
-            if ( englishAlphabets.indexOf(event.key) == -1 ) 
+            if ( englishAlphabets.indexOf(event.key) == -1) 
                {
-                   console.log()
                    alert("You pressed an invalid key" + event.key +" Please enter a letter between a to z");
                } 
+            else if ( my_guess_string.indexOf(event.key) == 0) {
+                alert("This letter is already part selected previously select another");
+            }
                else
                {
                 if (my_guess_count >= 10 ) {
