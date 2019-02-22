@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>The Psychic Game</title>
+    </head>
+    <body>
+        <h1>The Psychic Game</h1>
+        <h3>Guess what letter I'm thinking of</h3>
+        <h3>Wins: </h3>
+        <h3>Losses:</h3>
+        <h3>Guesses Left:</h3>
+        <h3 >Your Guesses so far: <span id=myGuessID></span></h3>
+
+
+        <script type="text/javascript">
+            var englishAlphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+            var computerGuess = Math.floor(Math.random() * englishAlphabets.length);
+            var myGuess =Array();
+            var myGuessID = document.getElementById("myGuessID");
+            var my_guess_count = 0;
+            var my_guess_string ="";
+            var my_Guess_letter='';
+
+         
+            function my_guesses_array()
+            {
+                document.onkeyup = function(event){
+                    myGuessID.textContent = event.key;
+
+                    if(myGuess.length == -1) {
+                        myGuess[0] = document.getElementById("myGuessID").value;
+                        console.log(myGuess.values);
+                    }
+                    else
+                    {
+                        if(myGuess.length == 0) {
+                            myGuess[0] = document.getElementById("myGuessID").value;
+                        }
+                        myGuess_letter = event.key;
+                        myGuess[0] = document.getElementById("myGuessID").value;
+                        for(i=0; i < myGuess.length; i++) {
+                            my_guess_string += myGuess_letter +',';
+                            document.getElementById("myGuessID").innerHTML = my_guess_string;
+                        }
+                        console.log(myGuess.length);
+                    }    
+                }
+            }
+            my_guesses_array();
+        </script>   
+    </body>
+
+
+</html>
