@@ -25,34 +25,40 @@ function my_guesses_array()
            // myGuessID.textContent = event.key;
     
             computerChar =  englishAlphabets.charAt(Math.floor(Math.random() * englishAlphabets.length));
-
+            console.log(my_guess_string.indexOf(event.key));
             if ( englishAlphabets.indexOf(event.key) == -1) 
                {
+                   myGuessLeft++;
                    alert("You pressed an invalid key" + event.key +" Please enter a letter between a to z");
+                  
                } 
-            else if ( my_guess_string.indexOf(event.key) == 0) {
+            else if (my_guess_string.indexOf(event.key) >= 0) {
+                   myGuessLeft++;
                 alert("This letter is already part selected previously select another");
+                console.log("increase guess left by 1");
+               
             }
                else
                {
-                if (my_guess_count >= 10 ) {
+                if (myGuessLeft <= 0 ) {
                     computerChar='';
                     myGuess= [];
-                    my_guess_string='';
+                    my_guess_string="";
                     document.getElementById("myGuessID").innerHTML = my_guess_string;
                     my_guess_count =0;
                     myLosses++;
-                    myGuessLeft =11;
+                    myGuessLeft =10;
                     document.getElementById("myLossID").innerHTML = myLosses;
+                    window.addEventListener('DOMContentLoaded', my_guesses_array, false);
                 }
                 if(computerChar == event.key) {
                     alert(computerChar + " That is the right answer");
                     computerChar='';
                     myGuess= [];
-                    my_guess_string='';
+                    my_guess_string="";
                     document.getElementById("myGuessID").innerHTML = my_guess_string;
                     my_guess_count =0;
-                    myGuessLeft =11;
+                    myGuessLeft =10;
                     myWins++;
                     document.getElementById("myWinID").innerHTML = myWins;
                 }
@@ -62,11 +68,20 @@ function my_guesses_array()
                     myGuess[0] = document.getElementById("myGuessID").value;
                     
                         for(i=0; i < myGuess.length; i++) {
+                            if (my_guess_string.indexOf(event.key) > 0) {
+                                //console.log(my_guess_string.charAt(my_guess_string.indexOf(event.key)));
+                                myGuessLeft++; 
+                                alert("This letter is already part selected previously select another");
+                                
+                            }
+                            else
+                            {
                             my_guess_string += myGuess_letter +',';
                             document.getElementById("myGuessID").innerHTML = my_guess_string;
                     
                             computerGuess = Math.floor(Math.random() * englishAlphabets.length);
-                    
+                            console.log(my_guess_string.charAt(my_guess_string.indexOf(event.key)));
+                            }     
                         }
                         my_guess_count++;
                 }
