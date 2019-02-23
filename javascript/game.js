@@ -40,17 +40,6 @@ function my_guesses_array()
             }
                else
                {
-                if (myGuessLeft <= 0 ) {
-                    computerChar='';
-                    myGuess= [];
-                    my_guess_string="";
-                    document.getElementById("myGuessID").innerHTML = my_guess_string;
-                    my_guess_count =0;
-                    myLosses++;
-                    myGuessLeft =10;
-                    document.getElementById("myLossID").innerHTML = myLosses;
-                    window.addEventListener('DOMContentLoaded', my_guesses_array, false);
-                }
                 if(computerChar == event.key) {
                     alert(computerChar + " That is the right answer");
                     computerChar='';
@@ -58,7 +47,7 @@ function my_guesses_array()
                     my_guess_string="";
                     document.getElementById("myGuessID").innerHTML = my_guess_string;
                     my_guess_count =0;
-                    myGuessLeft =10;
+                    myGuessLeft =11;
                     myWins++;
                     document.getElementById("myWinID").innerHTML = myWins;
                 }
@@ -85,13 +74,29 @@ function my_guesses_array()
                         }
                         my_guess_count++;
                 }
+                if (myGuessLeft == 1 ) {
+                    computerChar='';
+                    myGuess= [];
+                    my_guess_string="";
+                    document.getElementById("myGuessID").innerHTML = my_guess_string;
+                    my_guess_count =0;
+                    myLosses++;
+                    myGuessLeft =11;
+                    document.getElementById("myLossID").innerHTML = myLosses;
+                    window.addEventListener('DOMContentLoaded', my_guesses_array, false);
+                }
             }      
                 computerChar='';
                 myGuess= [];
-                myGuessLeft--;  
-                document.getElementById("myGuessLeftID").innerHTML = myGuessLeft;
+                if (myGuessLeft > 0){
+                    myGuessLeft--;  
+                    
+                }
                 window.addEventListener('DOMContentLoaded', my_guesses_array, false); 
+                document.getElementById("myGuessLeftID").innerHTML = myGuessLeft;
+                
+                
     })
-
+    
 }
 my_guesses_array();
